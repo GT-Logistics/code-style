@@ -1,6 +1,7 @@
 {
     "name": "gtlogistics/code-style",
     "description": "A shared code style for the GT+Logistics organization",
+    "keywords": ["dev"],
     "type": "library",
     "license": "proprietary",
     "autoload": {

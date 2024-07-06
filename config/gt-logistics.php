@@ -15,7 +15,6 @@ use PhpCsFixer\Fixer\FunctionNotation\UseArrowFunctionsFixer;
 use PhpCsFixer\Fixer\Operator\ConcatSpaceFixer;
 use PhpCsFixer\Fixer\Phpdoc\PhpdocAlignFixer;
 use PhpCsFixer\Fixer\Semicolon\MultilineWhitespaceBeforeSemicolonsFixer;
-use PhpCsFixer\Fixer\Strict\DeclareStrictTypesFixer;
 use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
@@ -88,7 +87,6 @@ return ECSConfig::configure()
     ->withConfiguredRule(TrailingCommaInMultilineFixer::class, ['elements' => $supportsTrailingComma])
     ->withConfiguredRule(YodaStyleFixer::class, ['equal' => false, 'identical' => false, 'less_and_greater' => false, 'always_move_variable' => false])
     ->withSkip([
-        DeclareStrictTypesFixer::class,
         NativeConstantInvocationFixer::class,
         NativeFunctionInvocationFixer::class,
         UseArrowFunctionsFixer::class,
