@@ -1,0 +1,22 @@
+{
+    "name": "gtlogistics/code-style",
+    "description": "A shared code style for the GT+Logistics organization",
+    "type": "library",
+    "license": "proprietary",
+    "autoload": {
+        "psr-4": {
+            "Gtlogistics\\CodeStyle\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "Brandon Antonio Lorenzo",
+            "email": "bantonio@gtglobal.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.4",
+        "symplify/easy-coding-standard": "^12.3"
+    }
+}
