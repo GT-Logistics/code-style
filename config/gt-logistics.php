@@ -6,6 +6,9 @@ declare(strict_types=1);
  * Copyright (C) 2024 GT+ Logistics.
  */
 
+use Composer\Semver\VersionParser;
+use Gtlogistics\CodeStyle\Util\ComposerUtil;
+use PHP_CodeSniffer\Standards\PEAR\Sniffs\WhiteSpace\ObjectOperatorIndentSniff;
 use PhpCsFixer\Fixer\ConstantNotation\NativeConstantInvocationFixer;
 use PhpCsFixer\Fixer\ControlStructure\NoAlternativeSyntaxFixer;
 use PhpCsFixer\Fixer\ControlStructure\TrailingCommaInMultilineFixer;
@@ -19,10 +22,15 @@ use PhpCsFixer\Fixer\Whitespace\ArrayIndentationFixer;
 use PhpCsFixer\Fixer\Whitespace\HeredocIndentationFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
-$phpVersion = PHP_VERSION_ID / 100;
-$supportsTrailingComma = ['arguments', 'arrays'];
+$composerUtil = new ComposerUtil(new VersionParser());
+$php74AndUp = $composerUtil->satisfiesPhp('>=7.4');
+$php80AndUp = $composerUtil->satisfiesPhp('>=8.0');
+$php81AndUp = $composerUtil->satisfiesPhp('>=8.1');
+$php82AndUp = $composerUtil->satisfiesPhp('>=8.2');
+$php83AndUp = $composerUtil->satisfiesPhp('>=8.3');
 
-if ($phpVersion >= 800) {
+$supportsTrailingComma = ['arguments', 'arrays'];
+if ($php80AndUp) {
     $supportsTrailingComma[] = 'match';
     $supportsTrailingComma[] = 'parameters';
 }
@@ -45,13 +53,13 @@ return ECSConfig::configure()
         false,
         false,
         false,
-        $phpVersion <= 704,
-        $phpVersion <= 704,
-        $phpVersion <= 800,
-        $phpVersion <= 803,
-        $phpVersion <= 801,
-        $phpVersion <= 802,
-        $phpVersion <= 803,
+        $php74AndUp,
+        $php74AndUp,
+        $php80AndUp,
+        $php80AndUp,
+        $php81AndUp,
+        $php82AndUp,
+        $php83AndUp,
         false,
         false,
         false,
@@ -78,6 +86,7 @@ return ECSConfig::configure()
     )
     ->withRules([
         ArrayIndentationFixer::class,
+        ObjectOperatorIndentSniff::class,
     ])
     ->withConfiguredRule(ConcatSpaceFixer::class, ['spacing' => 'one'])
     ->withConfiguredRule(HeredocIndentationFixer::class, ['indentation' => 'same_as_start'])
