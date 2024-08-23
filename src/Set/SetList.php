@@ -11,4 +11,6 @@ namespace Gtlogistics\CodeStyle\Set;
 final class SetList
 {
     public const GT_LOGISTICS = __DIR__ . '/../../config/gt-logistics.php';
+
+    public const LARAVEL = __DIR__ . '/../../config/laravel.php';
 }
