@@ -9,19 +9,21 @@ declare(strict_types=1);
 use Gtlogistics\CodeStyle\Set\SetList;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
+$workingDir = getcwd();
+
 return ECSConfig::configure()
     ->withPaths([
-        __DIR__ . '/app',
-        __DIR__ . '/config',
-        __DIR__ . '/tests',
-        __DIR__ . '/routes',
-        __DIR__ . '/database',
-        __DIR__ . '/bootstrap',
+        $workingDir . '/app',
+        $workingDir . '/config',
+        $workingDir . '/tests',
+        $workingDir . '/routes',
+        $workingDir . '/database',
+        $workingDir . '/bootstrap',
     ])
     ->withRootFiles()
     ->withSets([SetList::GT_LOGISTICS])
     ->withSkip([
-        __DIR__ . '/bootstrap/cache',
+        $workingDir . '/bootstrap/cache',
     ])
-    ->withCache(__DIR__ . '/.ecs.cache')
+    ->withCache($workingDir . '/.ecs.cache')
 ;
