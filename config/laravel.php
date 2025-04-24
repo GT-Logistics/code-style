@@ -30,13 +30,11 @@ return ECSConfig::configure()
     )
     ->withSets([SetList::GT_LOGISTICS])
     ->withSkip([
-        NotOperatorWithSuccessorSpaceFixer::class,
-    ])
-    ->withCache($workingDir . '/.ecs.cache')
-    ->withSkip([
         $workingDir . 'bootstrap/cache',
         $workingDir . 'build',
         $workingDir . 'node_modules',
         $workingDir . 'storage',
+        NotOperatorWithSuccessorSpaceFixer::class,
     ])
+    ->withCache($workingDir . '/.ecs.cache')
 ;
