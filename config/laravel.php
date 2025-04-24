@@ -7,6 +7,7 @@ declare(strict_types=1);
  */
 
 use Gtlogistics\CodeStyle\Set\SetList;
+use PhpCsFixer\Fixer\Operator\NotOperatorWithSuccessorSpaceFixer;
 use Symplify\EasyCodingStandard\Config\ECSConfig;
 
 $workingDir = getcwd();
@@ -21,9 +22,21 @@ return ECSConfig::configure()
         $workingDir . '/bootstrap',
     ])
     ->withRootFiles()
+    ->withPreparedSets(
+        false,
+        false,
+        false,
+        true,
+    )
     ->withSets([SetList::GT_LOGISTICS])
     ->withSkip([
-        $workingDir . '/bootstrap/cache',
+        NotOperatorWithSuccessorSpaceFixer::class,
     ])
     ->withCache($workingDir . '/.ecs.cache')
+    ->withSkip([
+        $workingDir . 'bootstrap/cache',
+        $workingDir . 'build',
+        $workingDir . 'node_modules',
+        $workingDir . 'storage',
+    ])
 ;

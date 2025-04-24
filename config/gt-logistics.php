@@ -28,6 +28,7 @@ $php80AndUp = $composerUtil->satisfiesPhp('>=8.0');
 $php81AndUp = $composerUtil->satisfiesPhp('>=8.1');
 $php82AndUp = $composerUtil->satisfiesPhp('>=8.2');
 $php83AndUp = $composerUtil->satisfiesPhp('>=8.3');
+$php84AndUp = $composerUtil->satisfiesPhp('>=8.4');
 
 $supportsTrailingComma = ['arguments', 'arrays'];
 if ($php80AndUp) {
@@ -60,6 +61,7 @@ return ECSConfig::configure()
         $php81AndUp,
         $php82AndUp,
         $php83AndUp,
+        $php84AndUp,
         false,
         false,
         false,
@@ -80,7 +82,7 @@ return ECSConfig::configure()
         false,
         false,
         false,
-        false,
+        true,
         true,
         true,
     )
